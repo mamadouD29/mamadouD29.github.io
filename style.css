@@ -1,0 +1,426 @@
+:root {
+    --h-bg-clr: rgb(139, 121, 94, .7);
+    --h-nv-bg-co: rgb(0, 0, 0, .9);
+    --ham-co: rgba(209, 175, 123, 0.7);
+    --nv-a-co: rgb(153, 133, 103);
+
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* start headeer */
+
+.header-wrapper {
+    background-color: var(--h-bg-clr);
+    padding: 0;
+    width: 100%;
+    height: 8vh;
+    box-shadow: 2px 2px 5px grey;
+    position: fixed;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 25% 50% 15% 10%;
+    grid-template-areas:
+        "brand . nav .";
+
+    padding: .9em 0;
+}
+
+
+.brand {
+    grid-area: brand;
+    cursor: pointer;
+}
+
+.brand a {
+    text-decoration: none;
+    color: var(--ham-co);
+
+    display: block;
+    border-radius: 0 10px 10px 0;
+}
+
+.brand a:hover {
+    background-color: var(--nv-a-co);
+}
+
+
+.nav {
+    grid-area: nav;
+}
+
+
+/* start hamburger */
+.nav .hamburger {
+    position: relative;
+    width: 30px;
+    height: 30px;
+
+    border: 2px solid var(--ham-co);
+    border-radius: 50%;
+    margin-left: 25%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+}
+
+.nav .hamburger::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+}
+
+.nav .hamburger.active::after {
+    animation: ham-puls 1.5s infinite;
+}
+
+.hamburger .patty {
+    position: relative;
+    width: 20px;
+    height: 2px;
+    background-color: var(--ham-co);
+}
+
+.hamburger .patty::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: var(--ham-co);
+
+    bottom: 4px;
+    transition: bottom .5s ease;
+}
+
+.hamburger.active .patty::before {
+    bottom: 0;
+    transition: bottom .5s ease;
+}
+
+.hamburger .patty::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: var(--ham-co);
+
+    top: 4px;
+    transition: top .5s ease;
+}
+
+.hamburger.active .patty::after {
+    top: 0;
+    transition: top .5s ease;
+}
+
+
+/* navigation list */
+.nav-list {
+    list-style-type: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+
+    padding: 0;
+    width: 81%;
+    height: 100vh;
+
+    display: flex;
+    flex-flow: nowrap column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+    /* background-color: var(--h-nv-bg-co); */
+    border-left: 2px solid black;
+    border-top-left-radius: 10px;
+    transition: left .5s ease;
+}
+
+.nav-list.active {
+    left: 20%;
+    transition: left .3s ease;
+}
+
+
+.nav-list li {
+    width: 100%;
+    text-align: center;
+    margin: 5px;
+
+}
+
+.nav-list li a {
+    text-decoration: none;
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+
+
+    color: var(--nv-a-co);
+    text-shadow: 2px 2px 5px black;
+
+}
+
+.nav-list li a:hover {
+    transform: scale(1.2);
+    border-radius: 10px 0 0 10px;
+    border: 2px solid var(--nv-a-co);
+    box-shadow: 1px 1px 5px black;
+    background-color: black;
+
+}
+
+
+
+
+/* start hero */
+
+.hero-wrapper {
+    height: 100vh;
+    /* background-color: yellow; */
+    background-image: url("../emdidi bg xps/xps-7ZWVnVSaafY-unsplash.jpg");
+    background-position: top center;
+    background-size: cover;
+}
+
+.hero {
+    padding: 8em 0 0 2em;
+
+}
+
+.hero h1,
+.hero h2,
+.hero h3 {
+    color: var(--ham-co);
+}
+
+
+
+
+/* start projects */
+.projects-wrapper {
+    height: 100%;
+    width: 100%;
+
+    padding: 10px;
+}
+
+.projects-title {
+    text-align: center;
+    text-shadow: 2px 2px 5px black;
+    margin: 10px 0;
+}
+
+
+.projects {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5% 90% 5%;
+
+    grid-template-areas:
+        ". real-madrid ."
+        ". internazionale ."
+        ". cote-divoire ."
+        ". dawaah .";
+    gap: 20px 0;
+}
+
+.real-madrid {
+    grid-area: real-madrid;
+}
+
+.internazionale {
+    grid-area: internazionale;
+}
+
+.cote-divoire {
+    grid-area: cote-divoire;
+}
+
+.dawaah {
+    grid-area: dawaah;
+}
+
+.real-madrid,
+.internazionale,
+.cote-divoire,
+.dawaah {
+    padding: 10px;
+    box-shadow: 1px 1px 4px black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.projects-logo img {
+    width: 100px;
+}
+
+.projects-info {
+    padding: 1em;
+    text-indent: 1em;
+}
+
+
+
+/* start assignments - solutions */
+.assignments-wrapper {
+    padding: 10px;
+    /* border: 1px solid black; */
+    margin: .5em;
+    box-shadow: 1px 1px 5px black;
+}
+
+.about-wrapper {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    /* border: 2px solid red; */
+    /* grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 10% 80% 10%;
+    grid-template-areas: 
+        ". . ."
+        ". about ."
+        ". . ."; */
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid red; */
+
+    padding: 10px;
+}
+
+.about {
+    grid-area: about;
+    border: 1px solid black;
+    display: flex;
+    padding: .3em;
+    box-shadow: 1px 1px 5px black;
+
+}
+
+.my-pic {
+    box-shadow: 1px 1px 5px black;
+    height: 100%;
+    padding: .2em;
+    width: 100;
+}
+
+.about img {
+    width: 200px;
+}
+
+
+
+@media screen and (min-width:600px) {
+
+    .header {
+        display: grid;
+        grid-template-columns: 20% 10% 60% 10%;
+        grid-template-areas:
+            "brand . nav .";
+
+
+    }
+
+    .nav-list {
+        position: relative;
+        justify-content: space-evenly;
+        flex-flow: row;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        border: none;
+        border-radius: 10px;
+
+        background-color: transparent;
+    }
+
+    .nav .hamburger {
+        display: none;
+    }
+
+    .nav-list li a {
+        font-size: 1.3em;
+        transition: .3s ease;
+    }
+
+    .nav-list li a:hover {
+        transition: .3s ease;
+        transform: scale(1.3);
+        background-color: var(--h-bg-clr);
+        border-radius: 10px;
+        border: 2px solid var(--h-bg-clr);
+
+    }
+
+
+    /* hero section*/
+    .hero {
+        padding: 15em 0 0 2em;
+    }
+
+
+
+    /* projects section */
+    .projects {
+        display: grid;
+        grid-template-columns: 5% 45% 45% 5%;
+        grid-template-areas:
+            ". real-madrid internazionale ."
+            ". cote-divoire dawaah .";
+        gap: 0;
+    }
+
+
+    .real-madrid,
+    .internazionale,
+    .cote-divoire,
+    .dawaah {
+        margin: 0.5em 0.5em;
+        box-sizing: border-box;
+        padding: 5px;
+        
+    }
+
+    /* start wrapper */
+    .about-wrapper {
+        padding: 0 5em;
+    }
+    
+    .about {
+        box-shadow: 1px 1px 5px black;
+        padding: .2em;
+    }
+
+    
+}
+
+
+
+@keyframes ham-puls {
+    100% {
+        transform: scale(1.1);
+        border: 1px solid white;
+
+    }
+}
